@@ -1,3 +1,10 @@
+# BSP and Build System Layer for the Auto OS
+
+OpenWRT is chosen as one of the build system for the Auto OS for the mini and small fromfactor devices. Below are the tested devices using the OpenWRT build system.
+
+1. OrangePI PC
+
+
 ![OpenWrt logo](include/logo.png)
 
 OpenWrt Project is a Linux operating system targeting embedded devices. Instead
