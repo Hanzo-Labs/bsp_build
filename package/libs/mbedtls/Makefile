@@ -8,13 +8,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mbedtls
-PKG_VERSION:=2.16.11
+PKG_VERSION:=3.1.0
 PKG_RELEASE:=$(AUTORELEASE)
 PKG_USE_MIPS16:=0
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/ARMmbed/mbedtls/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=c18e7e9abf95e69e425260493720470021384a1728417042060a35d0b7b18b41
+PKG_HASH:=b02df6f68dd1537e115a8497d5c173dc71edc55ad084756e57a30f951b725acd
 
 PKG_LICENSE:=GPL-2.0-or-later
 PKG_LICENSE_FILES:=gpl-2.0.txt
@@ -98,19 +98,19 @@ CMAKE_OPTIONS += \
 define Build/Configure
 	$(Build/Configure/Default)
 
-	awk 'BEGIN { rc = 1 } \
-	     /#define MBEDTLS_DEBUG_C/ { $$$$0 = "$(if $(CONFIG_LIBMBEDTLS_DEBUG_C),,// )#define MBEDTLS_DEBUG_C"; rc = 0 } \
-	     { print } \
-	     END { exit(rc) }' $(PKG_BUILD_DIR)/include/mbedtls/config.h \
-	     >$(PKG_BUILD_DIR)/include/mbedtls/config.h.new && \
-	mv $(PKG_BUILD_DIR)/include/mbedtls/config.h.new $(PKG_BUILD_DIR)/include/mbedtls/config.h
+	#awk 'BEGIN { rc = 1 } \
+	#     /#define MBEDTLS_DEBUG_C/ { $$$$0 = "$(if $(CONFIG_LIBMBEDTLS_DEBUG_C),,// )#define MBEDTLS_DEBUG_C"; rc = 0 } \
+	#     { print } \
+	#     END { exit(rc) }' $(PKG_BUILD_DIR)/include/mbedtls/config.h \
+	#     >$(PKG_BUILD_DIR)/include/mbedtls/config.h.new && \
+	#mv $(PKG_BUILD_DIR)/include/mbedtls/config.h.new $(PKG_BUILD_DIR)/include/mbedtls/config.h
 
-	awk 'BEGIN { rc = 1 } \
-	     /#define MBEDTLS_HKDF_C/ { $$$$0 = "$(if $(CONFIG_LIBMBEDTLS_HKDF_C),,// )#define MBEDTLS_HKDF_C"; rc = 0 } \
-	     { print } \
-	     END { exit(rc) }' $(PKG_BUILD_DIR)/include/mbedtls/config.h \
-	     >$(PKG_BUILD_DIR)/include/mbedtls/config.h.new && \
-	mv $(PKG_BUILD_DIR)/include/mbedtls/config.h.new $(PKG_BUILD_DIR)/include/mbedtls/config.h
+	#awk 'BEGIN { rc = 1 } \
+	#     /#define MBEDTLS_HKDF_C/ { $$$$0 = "$(if $(CONFIG_LIBMBEDTLS_HKDF_C),,// )#define MBEDTLS_HKDF_C"; rc = 0 } \
+	#     { print } \
+	#     END { exit(rc) }' $(PKG_BUILD_DIR)/include/mbedtls/config.h \
+	#     >$(PKG_BUILD_DIR)/include/mbedtls/config.h.new && \
+	#mv $(PKG_BUILD_DIR)/include/mbedtls/config.h.new $(PKG_BUILD_DIR)/include/mbedtls/config.h
 endef
 
 define Build/InstallDev
