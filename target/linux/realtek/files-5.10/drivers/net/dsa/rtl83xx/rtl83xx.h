@@ -74,6 +74,11 @@ inline u32 rtl_table_data_r(struct table_reg *r, int i);
 inline void rtl_table_data_w(struct table_reg *r, u32 v, int i);
 
 void __init rtl83xx_setup_qos(struct rtl838x_switch_priv *priv);
+
+int rtl83xx_packet_cntr_alloc(struct rtl838x_switch_priv *priv);
+
+int rtl83xx_port_is_under(const struct net_device * dev, struct rtl838x_switch_priv *priv);
+
 int read_phy(u32 port, u32 page, u32 reg, u32 *val);
 int write_phy(u32 port, u32 page, u32 reg, u32 val);
 
@@ -120,6 +125,12 @@ void rtl930x_print_matrix(void);
 
 /* RTL931x-specific */
 irqreturn_t rtl931x_switch_irq(int irq, void *dev_id);
+int rtl931x_sds_cmu_band_get(int sds, phy_interface_t mode);
+int rtl931x_sds_cmu_band_set(int sds, bool enable, u32 band, phy_interface_t mode);
+void rtl931x_sds_init(u32 sds, phy_interface_t mode);
+
+int rtl83xx_lag_add(struct dsa_switch *ds, int group, int port, struct netdev_lag_upper_info *info);
+int rtl83xx_lag_del(struct dsa_switch *ds, int group, int port);
 
 #endif /* _NET_DSA_RTL83XX_H */
 
