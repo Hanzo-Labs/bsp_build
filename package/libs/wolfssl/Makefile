@@ -83,6 +83,7 @@ CONFIGURE_ARGS += \
 	--enable-sha224 \
 	--enable-sha3 \
 	--enable-ripemd \
+    --enable-siphash \
 	--$(if $(CONFIG_IPV6),enable,disable)-ipv6 \
 	--$(if $(CONFIG_WOLFSSL_HAS_AES_CCM),enable,disable)-aesccm \
 	--$(if $(CONFIG_WOLFSSL_HAS_CERTGEN),enable,disable)-certgen \
