@@ -136,6 +136,14 @@ CONFIGURE_ARGS += \
 	--$(if $(CONFIG_PACKAGE_libwolfssl-benchmark),enable,disable)-crypttests \
 	--disable-examples \
 	--disable-jobserver \
+	--enable-sha224 \
+	--enable-sha3 \
+	--enable-ripemd \
+	--enable-siphash \
+	--enable-shake128 \
+	--enable-shake256 \
+	--enable-blake2 \
+	--enable-blake2s \
 	--$(if $(CONFIG_IPV6),enable,disable)-ipv6 \
 	--$(if $(CONFIG_WOLFSSL_HAS_AES_CCM),enable,disable)-aesccm \
 	--$(if $(CONFIG_WOLFSSL_HAS_CERTGEN),enable,disable)-certgen \
